@@ -22,7 +22,7 @@ public class Main {
     public static void main(String args[]) {
 
         InitWindow(1920, 1200, "Snake");
-        SetTargetFPS(80);
+        SetTargetFPS(40);
         ToggleFullscreen();
         Player play = new Player();
         Direction directionShift= Direction.RIGHT;
@@ -78,13 +78,13 @@ public class Main {
                 if(play.getGameRunning()) {
                     xYArray = play.getHeadXY();
                     if ((xYArray[0] + 40) % 80 == 0 && xYArray[1] % 80 == 0) {
-                        //play.checkCollision();
+                        play.checkCollision();
                         play.setDirection1(directionShift.ordinal());
                     }
                     if ((xYArray[0]) % 80 == 0 || (xYArray[1] + 40) % 80 == 0) {
-
+                        play.checkCollision();
                         play.setDirection2();
-                        play.extendSnake();
+                        //play.extendSnake();
                     }
                 }
                 play.DrawPlayer();

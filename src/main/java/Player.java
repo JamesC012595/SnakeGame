@@ -15,13 +15,29 @@ public class Player {
     Player(){
         this.head = new Node();
         this.tail = new Node(this.head,this.head.x -40,this.head.y ,1);
-        /*
+
         this.tail.next = new Node(this.tail,this.head.x-80,this.head.y,1);
         this.tail = this.tail.next;
         this.tail.next = new Node(this.tail,this.head.x-120,this.head.y,1);
         this.tail = this.tail.next;
-         */
-        this.size =2;
+        this.tail.next = new Node(this.tail,this.head.x-160,this.head.y,1);
+        this.tail = this.tail.next;
+        this.tail.next = new Node(this.tail,this.head.x-200,this.head.y,1);
+        this.tail = this.tail.next;
+        this.tail.next = new Node(this.tail,this.head.x-240,this.head.y,1);
+        this.tail = this.tail.next;
+        this.tail.next = new Node(this.tail,this.head.x-280,this.head.y,1);
+        this.tail = this.tail.next;
+        this.tail.next = new Node(this.tail,this.head.x-320,this.head.y,1);
+        this.tail = this.tail.next;
+        this.tail.next = new Node(this.tail,this.head.x-360,this.head.y,1);
+        this.tail = this.tail.next;
+        this.tail.next = new Node(this.tail,this.head.x-400,this.head.y,1);
+        this.tail = this.tail.next;
+        this.tail.next = new Node(this.tail,this.head.x-440,this.head.y,1);
+        this.tail = this.tail.next;
+
+        this.size =11;
         this.grid = new Grid();
         this.gameRunning = true;
 
@@ -140,11 +156,11 @@ public class Player {
 
     public void checkCollision(){
         Node temp = this.head.next;
-        for(int i = 0; i<((this.size-1)/2); i++){
+        for(int i = 0; i<this.size; i++){
             if(this.head.x == temp.x && this.head.y == temp.y){
                 this.gameRunning = false;
             }
-            temp = temp.next.next;
+            temp = temp.next;
         }
 
     }
