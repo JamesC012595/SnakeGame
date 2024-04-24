@@ -11,6 +11,11 @@ public class InputClient extends WebSocketClient {
         inputs = ByteBuffer.allocate(2);
     }
 
+    public InputClient(URI serverURI) {
+        super(serverURI);
+        inputs = ByteBuffer.allocate(2);
+    }
+
     @Override
     public void onOpen(ServerHandshake handshakedata) {
         send("Hello, it is me. Mario :)");
@@ -29,7 +34,8 @@ public class InputClient extends WebSocketClient {
 
     @Override
     public void onMessage(ByteBuffer message) {
-        System.out.println("received ByteBuffer");
+        //System.out.println("received ByteBuffer");
+        inputs = message;
     }
 
     @Override

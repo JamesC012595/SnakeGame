@@ -10,6 +10,7 @@ public class Player {
     private Node head;
     private Node tail;
     private Grid grid;
+    private boolean gameRunning;
 
     Player(){
         this.head = new Node();
@@ -22,18 +23,28 @@ public class Player {
          */
         this.size =2;
         this.grid = new Grid();
+        this.gameRunning = true;
 
     }
 
     public void DrawPlayer(){
-        Node temp = this.head;
-        DrawCircle(temp.x, temp.y, 30,GREEN);
-        DrawCircle(temp.x+20,temp.y-5,5,BLACK);
-        temp=temp.next;
-        while(temp!=null){
-            DrawCircle(temp.x,temp.y,30,GREEN);
+        if(this.gameRunning) {
+            Node temp = this.head;
+            DrawCircle(temp.x, temp.y, 30, GREEN);
+            DrawCircle(temp.x + 20, temp.y - 5, 5, BLACK);
             temp = temp.next;
+            while (temp != null) {
+                DrawCircle(temp.x, temp.y, 30, GREEN);
+                temp = temp.next;
+            }
+        }else{
+            this.head = null;
+            DrawText(("End Score: "+(this.size -2)/2),700,550,40,GREEN);
         }
+    }
+
+    public boolean getGameRunning(){
+        return this.gameRunning;
     }
 
     public int[] getHeadXY(){
@@ -126,6 +137,18 @@ public class Player {
     public int getSize(){
         return this.size;
     }
+
+    public void checkCollision(){
+        Node temp = this.head.next;
+        for(int i = 0; i<((this.size-1)/2); i++){
+            if(this.head.x == temp.x && this.head.y == temp.y){
+                this.gameRunning = false;
+            }
+            temp = temp.next.next;
+        }
+
+    }
+
 
 
     private class Node{
