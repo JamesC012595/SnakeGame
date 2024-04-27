@@ -21,8 +21,9 @@ enum Direction {
 public class Main {
     public static void main(String args[]) {
 
+
         InitWindow(1920, 1200, "Snake");
-        SetTargetFPS(40);
+        SetTargetFPS(200);
         ToggleFullscreen();
         Player play = new Player();
         Direction directionShift= Direction.RIGHT;
@@ -44,7 +45,7 @@ public class Main {
 
                 DrawBoard();
 
-                DrawCircle(100,180,40,GREEN);
+                //DrawCircle(100,180,40,GREEN);
 
                 if(inputClient.inputs.get(1)==2){
                     directionShift = Direction.UP;
@@ -74,7 +75,7 @@ public class Main {
                 }
 
 
-                play.moveSnake(8);
+                play.moveSnake(2);
                 if(play.getGameRunning()) {
                     xYArray = play.getHeadXY();
                     if ((xYArray[0] + 40) % 80 == 0 && xYArray[1] % 80 == 0) {
@@ -120,11 +121,13 @@ public class Main {
             }
         }
 
-
+        /*
         DrawRectangle(20,100,80,80, lightBlue);
         DrawRectangle(100,100,80,80,lighterPurple);
         DrawRectangle(20,180,80,80,BLUE);
         DrawRectangle(100,180,80,80,lightPurple);
+
+         */
     }
 
 
